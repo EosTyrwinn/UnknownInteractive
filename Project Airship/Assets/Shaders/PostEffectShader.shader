@@ -46,16 +46,16 @@
                 fixed4 col = tex2D(_MainTex, i.uv);
 
                 //Add Noise
-                fixed4 noi = tex2D(_NoiseTex, i.uv);
-                col.rgb *= noi.rgb;
+                //fixed4 noi = tex2D(_NoiseTex, i.uv);
+                //col.rgb *= noi.rgb;
 
                 //Move to Greyscale                
                 col.rgb = (0.3f * col.r) + (0.59f * col.g) + (0.11f * col.b);
 
                 //Push from center
-                col.rgb = col.rgb - 0.5f;
-                col.rgb *= 1.1f;
-                col.rgb += 0.5f;
+                //col.rgb = col.rgb - 0.5f;
+                //col.rgb *= 1.1f;
+                //col.rgb += 0.5f;
                                 
                 return col;
             }
