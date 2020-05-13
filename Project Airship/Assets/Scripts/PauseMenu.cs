@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -84,8 +86,7 @@ public class PauseMenu : MonoBehaviour
     public void MenuExit()
     {
         Time.timeScale = 1;
-        Debug.Log("Going to main menu");
-        //Scene manager Stuff
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void Quit()
