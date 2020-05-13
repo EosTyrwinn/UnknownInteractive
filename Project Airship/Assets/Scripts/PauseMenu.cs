@@ -1,16 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool Paused = false;
-    public bool options = false;
+    private bool options = false;
+    private bool NotepadOpen = false;
     public GameObject PauseMenuUI;
     public GameObject OptionsMenu;
     public GameObject MainPauseMenu;
+    public GameObject NotepadMenu;
+    public Text FOVValue;
+    public Text SenValue;
+    private float AngularSpeedHold;
 
     public void OnPause(InputAction.CallbackContext context)
     {
@@ -29,6 +33,38 @@ public class PauseMenu : MonoBehaviour
         {
             Pause();
         }
+    }
+
+    public void OnNotepad(InputAction.CallbackContext context)
+    {
+        if (Paused)
+        {
+            return;
+        }
+
+        if (!NotepadOpen)
+        {
+            OpenNotepad();
+        }
+        else
+        {
+            CloseNotepad();
+        }
+    }
+
+    public void OpenNotepad()
+    {
+        NotepadMenu.SetActive(true);
+        AngularSpeedHold = FirstPersonController.AngularSpeed;
+        FirstPersonController.AngularSpeed = 0;
+        NotepadOpen = true;
+    }
+
+    public void CloseNotepad()
+    {
+        NotepadMenu.SetActive(false);
+        FirstPersonController.AngularSpeed = AngularSpeedHold;
+        NotepadOpen = false;
     }
 
     void Pause()
@@ -60,11 +96,23 @@ public class PauseMenu : MonoBehaviour
     public void Options()
     {
         MainPauseMenu.SetActive(options);
+        OptionsMenu.SetActive(!options);
         options = !options;
-        OptionsMenu.SetActive(options);
     }
 
-    public void Button()
+    public void FOV(float fov)
     {
+        Camera.main.fieldOfView = fov;
+        int fovInt = (int)Mathf.Round(fov);
+        string valueText = fovInt.ToString();
+        FOVValue.text = valueText;
+    }
+
+    public void Senseitivity(float sen)
+    {
+        FirstPersonController.AngularSpeed = sen;
+        sen = (float)(sen / 60.0f);
+        string valueText = sen.ToString("n2");
+        SenValue.text = valueText;
     }
 }

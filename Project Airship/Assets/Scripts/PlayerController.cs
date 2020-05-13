@@ -49,6 +49,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Notepad"",
+                    ""type"": ""Button"",
+                    ""id"": ""01c0818f-159f-42d8-8ab8-1c292f66f5a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -194,6 +202,28 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fc56b9a-6738-4f2f-ac39-974c7de872e6"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c725be79-ad2c-4157-bf33-203e2d50fd86"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Notepad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +236,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Notepad = m_Player.FindAction("Notepad", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,6 +290,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Notepad;
     public struct PlayerActions
     {
         private @PlayerController m_Wrapper;
@@ -267,6 +299,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Notepad => m_Wrapper.m_Player_Notepad;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -288,6 +321,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Notepad.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNotepad;
+                @Notepad.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNotepad;
+                @Notepad.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNotepad;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -304,6 +340,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Notepad.started += instance.OnNotepad;
+                @Notepad.performed += instance.OnNotepad;
+                @Notepad.canceled += instance.OnNotepad;
             }
         }
     }
@@ -314,5 +353,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnNotepad(InputAction.CallbackContext context);
     }
 }

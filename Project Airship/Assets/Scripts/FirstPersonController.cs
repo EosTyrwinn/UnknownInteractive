@@ -6,7 +6,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] Transform Camera;
     [SerializeField] float WalkSpeed;
     [SerializeField] float RunSpeed;
-    [SerializeField] float AngularSpeed;
+    public static float AngularSpeed = 30;
 
     CharacterController Controller;
     Transform Trans;
