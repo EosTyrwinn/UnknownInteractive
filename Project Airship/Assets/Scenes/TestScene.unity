@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 110595386}
   - component: {fileID: 110595385}
   - component: {fileID: 110595389}
+  - component: {fileID: 110595390}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: RedCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,6 +232,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &110595390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110595384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310d261181770ee4d8c1dfdbae22b281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteName: Red Cube
 --- !u!1 &222900236
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,8 +258,9 @@ GameObject:
   - component: {fileID: 222900238}
   - component: {fileID: 222900237}
   - component: {fileID: 222900241}
+  - component: {fileID: 222900242}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: GreenCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,6 +356,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &222900242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222900236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310d261181770ee4d8c1dfdbae22b281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteName: Green Cube
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,8 +763,9 @@ GameObject:
   - component: {fileID: 1950338629}
   - component: {fileID: 1950338628}
   - component: {fileID: 1950338627}
+  - component: {fileID: 1950338632}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: BlueCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,6 +861,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0.18400002, z: 0}
+--- !u!114 &1950338632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950338626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310d261181770ee4d8c1dfdbae22b281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteName: Blue Cube
 --- !u!1 &1997985605
 GameObject:
   m_ObjectHideFlags: 0
