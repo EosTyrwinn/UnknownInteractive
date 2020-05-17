@@ -6,9 +6,11 @@ public class AddToNotes : MonoBehaviour
 {
     public string noteName;
     private GameObject player;
+    private GameObject ui;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        ui = GameObject.FindGameObjectWithTag("UI");
     }
 
     /// <summary>
@@ -20,7 +22,7 @@ public class AddToNotes : MonoBehaviour
         float dist = (transform.position - player.transform.position).magnitude;
         if (dist <= 3)
         {
-            Debug.Log("Clicked " + noteName);
+            ui.GetComponent<Notepad>().AddNote(noteName);
         }
     }
 }

@@ -9,11 +9,9 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool Paused = false;
     private bool options = false;
-    public static bool NotepadOpen = false;
     public GameObject PauseMenuUI;
     public GameObject OptionsMenu;
     public GameObject MainPauseMenu;
-    public GameObject NotepadMenu;
     public Text FOVValue;
     public Text SenValue;
     private float AngularSpeedHold;
@@ -40,49 +38,6 @@ public class PauseMenu : MonoBehaviour
         {
             Pause();
         }
-    }
-
-    /// <summary>
-    /// Opens and closes the notepad when the button is pressed.
-    /// </summary>
-    /// <param name="context"></param>
-    public void OnNotepad(InputAction.CallbackContext context)
-    {
-        if (Paused)
-        {
-            return;
-        }
-
-        if (!NotepadOpen)
-        {
-            OpenNotepad();
-        }
-        else
-        {
-            CloseNotepad();
-        }
-    }
-
-    /// <summary>
-    /// Operns notepad
-    /// </summary>
-    public void OpenNotepad()
-    {
-        NotepadMenu.SetActive(true);
-        AngularSpeedHold = FirstPersonController.AngularSpeed;
-        FirstPersonController.AngularSpeed = 0;
-        NotepadOpen = true;
-
-    }
-
-    /// <summary>
-    /// Closes notepad
-    /// </summary>
-    public void CloseNotepad()
-    {
-        NotepadMenu.SetActive(false);
-        FirstPersonController.AngularSpeed = AngularSpeedHold;
-        NotepadOpen = false;
     }
 
     /// <summary>

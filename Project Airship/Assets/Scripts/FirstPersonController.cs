@@ -58,7 +58,7 @@ public class FirstPersonController : MonoBehaviour
     private void Update()
     {
         // Hide the cursor if the game isn't paused and the notepad isn't open
-        if (PauseMenu.Paused || PauseMenu.NotepadOpen)
+        if (PauseMenu.Paused || Notepad.NotepadOpen)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
